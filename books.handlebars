@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Books</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Books</h1>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="bookinfo">Book Info</a></li>
+      <li><a href="borrowings">Borrowings</a></li>
+      <li><a href="members">Members</a></li>
+      <li><a href="movies">Movies</a></li>
+      <li><a href="movieinfo">Movie Info</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h2>Books</h2>
+  <table id="booksTable">
+    <thead>
+      <tr>
+        <th><button>New</button></th>
+        <th></th>
+        <th>Book ID <button>Filter</button></th>
+        <th>ISBN <button>Filter</button></th>
+        <th>Title <button>Filter</button></th>
+        <th>Author <button>Filter</button></th>
+        <th>Genre <button>Filter</button></th>
+        <th>Published <button>Filter</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>101</td>
+        <td>978-0-14-240733-2</td>
+        <td>The Great Gatsby</td>
+        <td>F. Scott Fitzgerald </td>
+        <td>Classic</td>
+        <td>1925</td>
+      </tr>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>102</td>
+        <td>978-0-06-112008-4</td>
+        <td>To Kill a Mockingbird</td>
+        <td>Harper Lee</td>
+        <td>Fiction</td>
+        <td>1960</td>
+      </tr>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>103</td>
+        <td>978-0-452-28423-4</td>
+        <td>1984</td>
+        <td>George Orwell</td>
+        <td>Dystopian</td>
+        <td>1949</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h2>Update Book Information</h2>
+  <form>
+    <label for="book_id">Book ID:</label>
+    <input type="text" id="book_id" name="book_id"><br><br>
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn"><br><br>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title"><br><br>
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author"><br><br>
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre"><br><br>
+    <label for="published">Published:</label>
+    <input type="text" id="published" name="published"><br><br>
+    <input type="submit" value="Update Book Info">
+  </form>
+  
+  <h2>Add New Book</h2>
+  <form>
+    <label for="newisbn">ISBN:</label>
+    <input type="text" id="newisbn" name="newisbn"><br><br>
+    <label for="newtitle">Title:</label>
+    <input type="text" id="newtitle" name="newtitle"><br><br>
+    <label for="newauthor">Author:</label>
+    <input type="text" id="newauthor" name="newauthor"><br><br>
+    <label for="newgenre">Genre:</label>
+    <input type="text" id="newgenre" name="newgenre"><br><br>
+    <label for="newpublished">Published:</label>
+    <input type="text" id="newpublished" name="newpublished"><br><br>
+    <input type="submit" value="Add New Book">
+  </form>
+  
+  <h2>Delete Book</h2>
+  <form>
+    <label for="deletebookid">Book ID:</label>
+    <input type="text" id="deletebookid" name="deletebookid"><br><br>
+    <input type="submit" value="Delete Book">
+    <label for="deletebookname">Book ID:</label>
+    <input type="text" id="deletebookname" name="deletebookname"><br><br>
+    <input type="submit" value="Delete Book">
+  </form>
+</main>
+<footer>
+  <p>&copy; Team Busy Bees</p>
+</footer>
+</body>
+</html>

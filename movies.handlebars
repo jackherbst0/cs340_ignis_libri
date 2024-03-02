@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movies</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Movies</h1>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="bookinfo">Book Info</a></li>
+      <li><a href="books">Books</a></li>
+      <li><a href="borrowings">Borrowings</a></li>
+      <li><a href="members">Members</a></li>
+      <li><a href="movieinfo">Movie Info</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h2>Movies</h2>
+  <table>
+    <thead>
+      <tr>
+        <th><button>New</button></th>
+        <th></th>
+        <th>Movie ID <button>Filter</button></th>
+        <th>Info ID <button>Filter</button></th>
+        <th>Title <button>Filter</button></th>
+        <th>Genre<button>Filter</button></th>
+        <th>Release Year<button>Filter</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>401</td>
+        <td>301</td>
+        <td>Inception</td>
+        <td>Sci-Fi</td>
+        <td>2010</td>
+      </tr>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>402</td>
+        <td>302</td>
+        <td>The Shawshank Redemption</td>
+        <td>Drama</td>
+        <td>1994</td>
+      </tr>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>403</td>
+        <td>303</td>
+        <td>Pulp Fiction</td>
+        <td>Crime</td>
+        <td>1994</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h2>Update Movie</h2>
+  <form>
+    <label for="movie_id">Movie ID:</label>
+    <input type="text" id="movie_id" name="movie_id"><br><br>
+    <label for="info_id">Info ID:</label>
+    <input type="text" id="info_id" name="info_id"><br><br>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title"><br><br>
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre"><br><br>
+    <label for="release_year">Release Year:</label>
+    <input type="text" id="release_year" name="release_year"><br><br>
+    <input type="submit" value="Update Movie Info">
+  </form>
+  
+  <h2>Add New Movie</h2>
+  <form>
+    <label for="new_title">Title:</label>
+    <input type="text" id="new_title" name="new_title"><br><br>
+    <label for="new_genre">Genre:</label>
+    <input type="text" id="new_genre" name="new_genre"><br><br>
+    <label for="new_release_year">Release Year:</label>
+    <input type="text" id="new_release_year" name="new_release_year"><br><br>
+    <input type="submit" value="Add New Movie">
+  </form>
+  
+  <h2>Delete Movie</h2>
+  <form>
+    <label for="delete_movie_id">Movie ID:</label>
+    <input type="text" id="delete_movie_id" name="delete_movie_id"><br><br>
+    <input type="submit" value="Delete Movie">
+    <label for="delete_movie_name">Movie Name:</label>
+    <input type="text" id="delete_movie_name" name="delete_movie_name"><br><br>
+    <input type="submit" value="Delete Movie">
+  </form>
+</main>
+<footer>
+  <p>&copy; Team Busy Bees</p>
+</footer>
+</body>
+</html>

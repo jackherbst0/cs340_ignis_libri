@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Info</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Book Info</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="borrowings.html">Borrowings</a></li>
+      <li><a href="members.html">Members</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="movieinfo.html">Movie Info</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h2>Book Info</h2>
+  <table>
+    <thead>
+      <tr>
+        <th><button>New</button></th>
+        <th></th>
+        <th>ISBN <button>Filter</button></th>
+        <th>Title <button>Filter</button></th>
+        <th>Author <button>Filter</button></th>
+        <th>Publication <button>Filter</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>978-0-14-240733-2</td>
+        <td>The Great Gatsby</td>
+        <td>F. Scott Fitzgerald</td>
+        <td>Scribner</td>
+      </tr>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>978-0-06-112008-4</td>
+        <td>To Kill a Mockingbird</td>
+        <td>Harper Lee</td>
+        <td>Harper Perennial</td>
+      </tr>
+      <tr>
+        <td><button>Edit</button></td>
+        <td><button>Delete</button></td>
+        <td>978-0-452-28423-4</td>
+        <td>1984</td>
+        <td>George Orwell</td>
+        <td>Signet Classics</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h2>Update Book Info</h2>
+  <form>
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn"><br><br>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title"><br><br>
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author"><br><br>
+    <label for="publication">Publication:</label>
+    <input type="text" id="publication" name="publication"><br><br>
+    <input type="submit" value="Update Book Info">
+  </form>
+  
+  <h2>Add New BookInfo</h2>
+  <form>
+    <label for="newisbn">ISBN:</label>
+    <input type="text" id="newisbn" name="newisbn"><br><br>
+    <label for="newtitle">Title:</label>
+    <input type="text" id="newtitle" name="newtitle"><br><br>
+    <label for="newauthor">Author:</label>
+    <input type="text" id="newauthor" name="newauthor"><br><br>
+    <label for="newpublication">Publication:</label>
+    <input type="text" id="newpublication" name="newpublication"><br><br>
+    <input type="submit" value="Add New Book Info">
+  </form>
+  
+  <h2>Delete BookInfo</h2>
+  <form>
+    <label for="deleteisbn">ISBN:</label>
+    <input type="text" id="deleteisbn" name="deleteisbn"><br><br>
+    <input type="submit" value="Delete Book Info">
+  </form>
+</main>
+<footer>
+  <p>&copy; Team Busy Bees</p>
+</footer>
+</body>
+</html>

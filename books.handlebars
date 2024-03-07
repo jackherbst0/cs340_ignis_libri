@@ -23,7 +23,7 @@
 </header>
 <main>
   <h2>Books</h2>
-  <table id="booksTable">
+  <table>
     <thead>
       <tr>
         <th><button>New</button></th>
@@ -37,41 +37,27 @@
       </tr>
     </thead>
     <tbody>
+      {{#each books}}
       <tr>
         <td><button>Edit</button></td>
         <td><button>Delete</button></td>
-        <td>101</td>
-        <td>978-0-14-240733-2</td>
-        <td>The Great Gatsby</td>
-        <td>F. Scott Fitzgerald </td>
-        <td>Classic</td>
-        <td>1925</td>
+        <td>{{this.book_id}}</td>
+        <td>{{this.isbn}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.author}}</td>
+        <td>{{this.genre}}</td>
+        <td>{{this.published}}</td>
       </tr>
+      {{else}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>102</td>
-        <td>978-0-06-112008-4</td>
-        <td>To Kill a Mockingbird</td>
-        <td>Harper Lee</td>
-        <td>Fiction</td>
-        <td>1960</td>
+          <td colspan="8">No books found</td>
       </tr>
-      <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>103</td>
-        <td>978-0-452-28423-4</td>
-        <td>1984</td>
-        <td>George Orwell</td>
-        <td>Dystopian</td>
-        <td>1949</td>
-      </tr>
+      {{/each}}
     </tbody>
   </table>
   
   <h2>Update Book Information</h2>
-  <form>
+  <form action="/updateBook" method="post">
     <label for="book_id">Book ID:</label>
     <input type="text" id="book_id" name="book_id"><br><br>
     <label for="isbn">ISBN:</label>
@@ -88,7 +74,7 @@
   </form>
   
   <h2>Add New Book</h2>
-  <form>
+  <form action="/addNewBook" method="post">
     <label for="newisbn">ISBN:</label>
     <input type="text" id="newisbn" name="newisbn"><br><br>
     <label for="newtitle">Title:</label>
@@ -103,7 +89,7 @@
   </form>
   
   <h2>Delete Book</h2>
-  <form>
+  <form action="/deleteBook" method="post">
     <label for="deletebookid">Book ID:</label>
     <input type="text" id="deletebookid" name="deletebookid"><br><br>
     <input type="submit" value="Delete Book">

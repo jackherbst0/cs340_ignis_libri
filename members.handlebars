@@ -37,7 +37,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each results}}
+      {{#each members}}
       <tr>
         <td><button>Edit</button></td>
         <td><button>Delete</button></td>
@@ -55,7 +55,7 @@
     </tbody>
   </table>
   <h2>Update Member</h2>
-  <form action="/updateMember" method="post">
+  <form>
     <label for="member_id">Member ID:</label>
     <input type="text" id="member_id" name="member_id"><br><br>
     <label for="name">Name:</label>

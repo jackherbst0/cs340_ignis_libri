@@ -35,30 +35,20 @@
       </tr>
     </thead>
     <tbody>
+      {{#each bookinfo}}
       <tr>
         <td><button>Edit</button></td>
         <td><button>Delete</button></td>
-        <td>978-0-14-240733-2</td>
-        <td>The Great Gatsby</td>
-        <td>F. Scott Fitzgerald</td>
-        <td>Scribner</td>
+        <td>{{this.isbn}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.author}}</td>
+        <td>{{this.publication}}</td>
       </tr>
+      {{else}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>978-0-06-112008-4</td>
-        <td>To Kill a Mockingbird</td>
-        <td>Harper Lee</td>
-        <td>Harper Perennial</td>
+          <td colspan="6">No book info found</td>
       </tr>
-      <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>978-0-452-28423-4</td>
-        <td>1984</td>
-        <td>George Orwell</td>
-        <td>Signet Classics</td>
-      </tr>
+      {{/each}}
     </tbody>
   </table>
   

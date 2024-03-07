@@ -35,30 +35,20 @@
       </tr>
     </thead>
     <tbody>
+      {{#each movieinfo}}
       <tr>
         <td><button>Edit</button></td>
         <td><button>Delete</button></td>
-        <td>301</td>
-        <td>Inception</td>
-        <td>Christopher Nolan</td>
-        <td>8.8</td>
+        <td>{{this.info_id}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.director}}</td>
+        <td>{{this.rating}}</td>
       </tr>
+      {{else}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>302</td>
-        <td>The Shawshank Redemption</td>
-        <td>Frank Darabont</td>
-        <td>9.3</td>
+          <td colspan="6">No movie info found</td>
       </tr>
-      <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>303</td>
-        <td>Pulp Fiction</td>
-        <td>Quentin Tarantino</td>
-        <td>8.9</td>
-      </tr>
+      {{/each}}
     </tbody>
   </table>
   

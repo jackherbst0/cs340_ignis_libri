@@ -33,28 +33,67 @@ app.get('/members', function(req, res) {
             return;
         }
         // Render the HTML file with the retrieved data using Handlebars
-        res.render('members', { results: results});
+        res.render('members', { members: results});
     });
 });
 
 app.get('/movies', function(req,res){
-    res.render('movies');
+    db.pool.query('SELECT * FROM Movies', function(err, results, fields) {
+        if (err) {
+            console.error("Error querying database: " + err);
+            return;
+        }
+        console.log(results)
+        // Render the HTML file with the retrieved data using Handlebars
+        res.render('movies', { movies: results});
+    });
 });
 
 app.get('/books', function(req,res){
-    res.render('books');
+    db.pool.query('SELECT * FROM Books', function(err, results, fields) {
+        if (err) {
+            console.error("Error querying database: " + err);
+            return;
+        }
+        // Render the HTML file with the retrieved data using Handlebars
+        res.render('books', { books: results});
+    });
 });
 
 app.get('/bookinfo', function(req,res){
-    res.render('bookinfo');
+    db.pool.query('SELECT * FROM BookInfo', function(err, results, fields) {
+        if (err) {
+            console.error("Error querying database: " + err);
+            return;
+        }
+        console.log(results)
+        // Render the HTML file with the retrieved data using Handlebars
+        res.render('bookinfo', { bookinfo: results});
+    });
 });
 
 app.get('/borrowings', function(req,res){
-    res.render('borrowings');
+    db.pool.query('SELECT * FROM Borrowings', function(err, results, fields) {
+        if (err) {
+            console.error("Error querying database: " + err);
+            return;
+        }
+        console.log(results)
+        // Render the HTML file with the retrieved data using Handlebars
+        res.render('borrowings', { borrowings: results});
+    });
 });
 
 app.get('/movieinfo', function(req,res){
-    res.render('movieinfo');
+    db.pool.query('SELECT * FROM MovieInfo', function(err, results, fields) {
+        if (err) {
+            console.error("Error querying database: " + err);
+            return;
+        }
+        console.log(results)
+        // Render the HTML file with the retrieved data using Handlebars
+        res.render('movieinfo', { movieinfo: results});
+    });
 });
 
 

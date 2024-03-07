@@ -37,56 +37,20 @@
       </tr>
     </thead>
     <tbody>
+      {{#each borrowings}}
       <tr>
         <td><button>Edit</button></td>
         <td><button>Delete</button></td>
-        <td>204</td>
-        <td>1</td>
-        <td>102</td>
-        <td>NULL</td>
-        <td>2024-02-20</td>
-        <td>2024-02-28</td>
+        <td>{{this.borrowing_id}}</td>
+        <td>{{this.member_id}}</td>
+        <td>{{this.borrow_date}}</td>
+        <td>{{this.return_date}}</td>
       </tr>
+      {{else}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>205</td>
-        <td>2</td>
-        <td>NULL</td>
-        <td>403</td>
-        <td>2024-02-22</td>
-        <td>2024-03-01</td>
+          <td colspan="6">No borrowings found</td>
       </tr>
-      <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>206</td>
-        <td>3</td>
-        <td>103</td>
-        <td>NULL</td>
-        <td>2024-02-25</td>
-        <td>2024-03-05</td>
-      </tr>
-      <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>207</td>
-        <td>1</td>
-        <td>NULL</td>
-        <td>401</td>
-        <td>2024-03-10</td>
-        <td>2024-03-20</td>
-      </tr>
-      <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>208</td>
-        <td>2</td>
-        <td>101</td>
-        <td>NULL</td>
-        <td>2024-03-15</td>
-        <td>2024-03-25</td>
-      </tr>
+      {{/each}}
     </tbody>
   </table>
   

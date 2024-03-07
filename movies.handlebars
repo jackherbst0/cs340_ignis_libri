@@ -36,33 +36,21 @@
       </tr>
     </thead>
     <tbody>
+      {{#each movies}}
       <tr>
         <td><button>Edit</button></td>
         <td><button>Delete</button></td>
-        <td>401</td>
-        <td>301</td>
-        <td>Inception</td>
-        <td>Sci-Fi</td>
-        <td>2010</td>
+        <td>{{this.movie_id}}</td>
+        <td>{{this.info_id}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.genre}}</td>
+        <td>{{this.release_year}}</td>
       </tr>
+      {{else}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>402</td>
-        <td>302</td>
-        <td>The Shawshank Redemption</td>
-        <td>Drama</td>
-        <td>1994</td>
+          <td colspan="7">No movies found</td>
       </tr>
-      <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-        <td>403</td>
-        <td>303</td>
-        <td>Pulp Fiction</td>
-        <td>Crime</td>
-        <td>1994</td>
-      </tr>
+      {{/each}}
     </tbody>
   </table>
   

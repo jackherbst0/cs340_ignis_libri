@@ -57,7 +57,11 @@
   <h2>Update Borrowing</h2>
   <form>
     <label for="borrowing_id">Borrowing ID:</label>
-    <input type="text" id="borrowing_id" name="borrowing_id"><br><br>
+    <select id="borrowing_id" name="borrowing_id">
+      {{#each borrowings}}
+      <option value="{{this.borrowing_id}}">{{this.borrowing_id}}</option>
+      {{/each}}
+    </select><br><br>
     <label for="member_id">Member ID:</label>
     <input type="text" id="member_id" name="member_id"><br><br>
     <label for="book_id">Book ID:</label>
@@ -91,7 +95,11 @@
   <h2>Delete Borrowing</h2>
   <form>
     <label for="delete_borrowing_id">Borrowing ID:</label>
-    <input type="text" id="delete_borrowing_id" name="delete_borrowing_id"><br><br>
+    <select id="borrowing_id" name="borrowing_id">
+      {{#each borrowings}}
+      <option value="{{this.borrowing_id}}">{{this.borrowing_id}}</option>
+      {{/each}}
+    </select><br><br>
     <input type="submit" value="Delete Borrowing">
   </form>
 </main>

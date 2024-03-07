@@ -57,7 +57,11 @@
   <h2>Update Member</h2>
   <form>
     <label for="member_id">Member ID:</label>
-    <input type="text" id="member_id" name="member_id"><br><br>
+    <select id="member_id" name="member_id">
+      {{#each members}}
+      <option value="{{this.member_id}}">{{this.member_id}}</option>
+      {{/each}}
+    </select><br><br>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name"><br><br>
     <label for="address">Address:</label>
@@ -85,7 +89,11 @@
   <h2>Delete Member</h2>
   <form action="/deleteMember" method="post">
     <label for="delete_member_id">Member ID:</label>
-    <input type="text" id="delete_member_id" name="delete_member_id"><br><br>
+    <select id="member_id" name="member_id">
+      {{#each members}}
+      <option value="{{this.member_id}}">{{this.member_id}}</option>
+      {{/each}}
+    </select><br><br>
     <input type="submit" value="Delete Member">
     <label for="delete_member_name">Member Name:</label>
     <input type="text" id="delete_member_name" name="delete_member_name"><br><br>

@@ -57,7 +57,11 @@
   <h2>Update Movie</h2>
   <form>
     <label for="movie_id">Movie ID:</label>
-    <input type="text" id="movie_id" name="movie_id"><br><br>
+    <select id="movie_id" name="movie_id">
+      {{#each movies}}
+      <option value="{{this.movie_id}}">{{this.movie_id}}</option>
+      {{/each}}
+    </select><br><br>
     <label for="info_id">Info ID:</label>
     <input type="text" id="info_id" name="info_id"><br><br>
     <label for="title">Title:</label>
@@ -83,7 +87,11 @@
   <h2>Delete Movie</h2>
   <form>
     <label for="delete_movie_id">Movie ID:</label>
-    <input type="text" id="delete_movie_id" name="delete_movie_id"><br><br>
+    <select id="movie_id" name="movie_id">
+      {{#each movies}}
+      <option value="{{this.movie_id}}">{{this.movie_id}}</option>
+      {{/each}}
+    </select><br><br>
     <input type="submit" value="Delete Movie">
     <label for="delete_movie_name">Movie Name:</label>
     <input type="text" id="delete_movie_name" name="delete_movie_name"><br><br>

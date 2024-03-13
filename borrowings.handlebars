@@ -26,8 +26,7 @@
   <table>
     <thead>
       <tr>
-        <th><button>New</button></th>
-        <th></th>
+        <th><button id="showFormButton">New</button></th>
         <th>Borrowing ID <button>Filter</button></th>
         <th>Member ID <button>Filter</button></th>
         <th>Book ID <button>Filter</button></th>
@@ -39,10 +38,14 @@
     <tbody>
       {{#each borrowings}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
+        <td><form action="/deleteBorrowing" method="post">
+            <input type="hidden" name="delete_borrowing_id" value="{{this.borrowing_id}}">
+            <input type="submit" value="Delete">
+          </form></td>
         <td>{{this.borrowing_id}}</td>
         <td>{{this.member_id}}</td>
+        <td>{{this.book_id}}</td>
+        <td>{{this.movie_id}}</td>
         <td>{{this.borrow_date}}</td>
         <td>{{this.return_date}}</td>
       </tr>
@@ -54,10 +57,27 @@
     </tbody>
   </table>
   
+<div id="newMemberForm" style="display: none;">
+  <h2>Add New Borrowing</h2>
+  <form action="/addNewBorrowing" method="post">
+    <label for="new_member_id">Member ID:</label>
+    <input type="text" id="new_member_id" name="new_member_id"><br><br>
+    <label for="new_book_id">Book ID:</label>
+    <input type="text" id="new_book_id" name="new_book_id"><br><br>
+    <label for="new_movie_id">Movie ID:</label>
+    <input type="text" id="new_movie_id" name="new_movie_id"><br><br>
+    <label for="new_borrow_date">Borrow Date:</label>
+    <input type="text" id="new_borrow_date" name="new_borrow_date"><br><br>
+    <label for="new_return_date">Return Date:</label>
+    <input type="text" id="new_return_date" name="new_return_date"><br><br>
+    <input type="submit" value="Add New Borrowing">
+  </form>
+</div>
+
   <h2>Update Borrowing</h2>
-  <form>
+  <form action="/UpdateBorrowing" method="post">
     <label for="borrowing_id">Borrowing ID:</label>
-    <select id="borrowing_id" name="borrowing_id">
+    <select id="member_id" name="member_id">
       {{#each borrowings}}
       <option value="{{this.borrowing_id}}">{{this.borrowing_id}}</option>
       {{/each}}
@@ -75,27 +95,12 @@
     <input type="submit" value="Update Borrowing">
   </form>
   
-  <h2>Add New Borrowing</h2>
-  <form>
-    <label for="new_borrow_id">Borrowing ID:</label>
-    <input type="text" id="new_borrowing_id" name="new_borrowing_id"><br><br>
-    <label for="new_member_id">Member ID:</label>
-    <input type="text" id="new_member_id" name="new_member_id"><br><br>
-    <label for="new_book_id">Book ID:</label>
-    <input type="text" id="new_book_id" name="new_book_id"><br><br>
-    <label for="new_movie_id">Movie ID:</label>
-    <input type="text" id="new_movie_id" name="new_movie_id"><br><br>
-    <label for="new_borrow_date">Borrow Date:</label>
-    <input type="text" id="new_borrow_date" name="new_borrow_date"><br><br>
-    <label for="new_return_date">Return Date:</label>
-    <input type="text" id="new_return_date" name="new_return_date"><br><br>
-    <input type="submit" value="Add New Borrowing">
-  </form>
+
   
   <h2>Delete Borrowing</h2>
-  <form>
+  <form action="/DeleteBorrowing" method="post">
     <label for="delete_borrowing_id">Borrowing ID:</label>
-    <select id="borrowing_id" name="borrowing_id">
+    <select id="delete_member_id" name="delete_member_id">
       {{#each borrowings}}
       <option value="{{this.borrowing_id}}">{{this.borrowing_id}}</option>
       {{/each}}
@@ -106,5 +111,20 @@
 <footer>
   <p>&copy; Team Busy Bees</p>
 </footer>
+<script>
+  document.getElementById('showFormButton').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  });
+  document.getElementById('submit').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+      form.style.display = 'none';
+
+  });
+</script>
 </body>
 </html>

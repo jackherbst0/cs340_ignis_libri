@@ -26,8 +26,7 @@
   <table>
     <thead>
       <tr>
-        <th><button>New</button></th>
-        <th></th>
+        <th><button id="showFormButton">New</button></th>
         <th>Book ID <button>Filter</button></th>
         <th>ISBN <button>Filter</button></th>
         <th>Title <button>Filter</button></th>
@@ -39,8 +38,10 @@
     <tbody>
       {{#each books}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
+        <td><form action="/deleteBook" method="post">
+            <input type="hidden" name="delete_book_id" value="{{this.book_id}}">
+            <input type="submit" value="Delete">
+          </form></td>
         <td>{{this.book_id}}</td>
         <td>{{this.isbn}}</td>
         <td>{{this.title}}</td>
@@ -56,6 +57,23 @@
     </tbody>
   </table>
   
+  <div id="newMemberForm" style="display: none;">
+  <h2>Add New Book</h2>
+  <form action="/addNewBook" method="post">
+    <label for="newisbn">ISBN:</label>
+    <input type="text" id="newisbn" name="newisbn"><br><br>
+    <label for="newtitle">Title:</label>
+    <input type="text" id="newtitle" name="newtitle"><br><br>
+    <label for="newauthor">Author:</label>
+    <input type="text" id="newauthor" name="newauthor"><br><br>
+    <label for="newgenre">Genre:</label>
+    <input type="text" id="newgenre" name="newgenre"><br><br>
+    <label for="newpublished">Published:</label>
+    <input type="text" id="newpublished" name="newpublished"><br><br>
+    <input type="submit" value="Add New Book">
+  </form>
+  </div>
+
   <h2>Update Book Information</h2>
   <form action="/updateBook" method="post">
     <label for="book_id">Book ID:</label>
@@ -77,37 +95,36 @@
     <input type="submit" value="Update Book Info">
   </form>
   
-  <h2>Add New Book</h2>
-  <form action="/addNewBook" method="post">
-    <label for="newisbn">ISBN:</label>
-    <input type="text" id="newisbn" name="newisbn"><br><br>
-    <label for="newtitle">Title:</label>
-    <input type="text" id="newtitle" name="newtitle"><br><br>
-    <label for="newauthor">Author:</label>
-    <input type="text" id="newauthor" name="newauthor"><br><br>
-    <label for="newgenre">Genre:</label>
-    <input type="text" id="newgenre" name="newgenre"><br><br>
-    <label for="newpublished">Published:</label>
-    <input type="text" id="newpublished" name="newpublished"><br><br>
-    <input type="submit" value="Add New Book">
-  </form>
-  
+
   <h2>Delete Book</h2>
   <form action="/deleteBook" method="post">
     <label for="deletebookid">Book ID:</label>
-    <select id="book_id" name="book_id">
-      {{#each books}}
+    <select id="deletebookid" name="deletebookid">
+      {{#each book}}
       <option value="{{this.book_id}}">{{this.book_id}}</option>
       {{/each}}
     </select><br><br>
-    <input type="submit" value="Delete Book">
-    <label for="deletebookname">Book ID:</label>
-    <input type="text" id="deletebookname" name="deletebookname"><br><br>
     <input type="submit" value="Delete Book">
   </form>
 </main>
 <footer>
   <p>&copy; Team Busy Bees</p>
 </footer>
+
+<script>
+  document.getElementById('showFormButton').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  });
+  document.getElementById('submit').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+      form.style.display = 'none';
+
+  });
+</script>
 </body>
 </html>

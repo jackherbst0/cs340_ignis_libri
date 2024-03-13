@@ -27,8 +27,7 @@
   <table>
     <thead>
       <tr>
-        <th><button>New</button></th>
-        <th></th>
+        <th><button id="showFormButton">New</button></th>
         <th>Member ID <button>Filter</button></th>
         <th>Name <button>Filter</button></th>
         <th>Address <button>Filter</button></th>
@@ -39,8 +38,10 @@
     <tbody>
       {{#each members}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
+        <td><form action="/deleteMember" method="post">
+            <input type="hidden" name="delete_member_id" value="{{this.member_id}}">
+            <input type="submit" value="Delete">
+          </form></td>
         <td>{{this.member_id}}</td>
         <td>{{this.name}}</td>
         <td>{{this.address}}</td>
@@ -54,8 +55,24 @@
       {{/each}}
     </tbody>
   </table>
+  
+  <div id="newMemberForm" style="display: none;">
+  <h2>Add New Member</h2>
+  <form action="/addNewMember" method="post">
+      <label for="new_name">Name:</label>
+      <input type="text" id="new_name" name="new_name" required><br><br>
+      <label for="new_address">Address:</label>
+      <input type="text" id="new_address" name="new_address" required><br><br>
+      <label for="new_phone">Phone:</label>
+      <input type="text" id="new_phone" name="new_phone" required><br><br>
+      <label for="new_email">Email:</label>
+      <input type="text" id="new_email" name="new_email" required><br><br>
+      <input type="submit" value="Add New Member">
+  </form>
+</div>
+
   <h2>Update Member</h2>
-  <form>
+  <form action="/updateMember" method="post">
     <label for="member_id">Member ID:</label>
     <select id="member_id" name="member_id">
       {{#each members}}
@@ -73,35 +90,35 @@
     <input type="submit" value="Update Member">
   </form>
   
-  <h2>Add New Member</h2>
-<form action="/addNewMember" method="post">
-    <label for="new_name">Name:</label>
-    <input type="text" id="new_name" name="new_name" required><br><br>
-    <label for="new_address">Address:</label>
-    <input type="text" id="new_address" name="new_address" required><br><br>
-    <label for="new_phone">Phone:</label>
-    <input type="text" id="new_phone" name="new_phone" required><br><br>
-    <label for="new_email">Email:</label>
-    <input type="text" id="new_email" name="new_email" required><br><br>
-    <input type="submit" value="Add New Member">
-</form>
-  
   <h2>Delete Member</h2>
   <form action="/deleteMember" method="post">
     <label for="delete_member_id">Member ID:</label>
-    <select id="member_id" name="member_id">
+    <select id="delete_member_id" name="delete_member_id">
       {{#each members}}
       <option value="{{this.member_id}}">{{this.member_id}}</option>
       {{/each}}
     </select><br><br>
     <input type="submit" value="Delete Member">
-    <label for="delete_member_name">Member Name:</label>
-    <input type="text" id="delete_member_name" name="delete_member_name"><br><br>
-    <input type="submit" value="Delete Member">
   </form>
 </main>
+
 <footer>
   <p>&copy; Team Busy Bees</p>
 </footer>
+<script>
+  document.getElementById('showFormButton').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  });
+  document.getElementById('submit').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+      form.style.display = 'none';
+
+  });
+</script>
 </body>
 </html>

@@ -26,8 +26,7 @@
   <table>
     <thead>
       <tr>
-        <th><button>New</button></th>
-        <th></th>
+        <th><button id="showFormButton">New</button></th>
         <th>Movie ID <button>Filter</button></th>
         <th>Info ID <button>Filter</button></th>
         <th>Title <button>Filter</button></th>
@@ -38,8 +37,10 @@
     <tbody>
       {{#each movies}}
       <tr>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
+        <td><form action="/deleteMovie" method="post">
+            <input type="hidden" name="delete_movie_id" value="{{this.movie_id}}">
+            <input type="submit" value="Delete">
+          </form></td>
         <td>{{this.movie_id}}</td>
         <td>{{this.info_id}}</td>
         <td>{{this.title}}</td>
@@ -54,8 +55,23 @@
     </tbody>
   </table>
   
+<div id="newMemberForm" style="display: none;">
+  <h2>Add New Movie</h2>
+  <form action="/addNewMovie" method="post">
+    <label for="new_title">Info ID:</label>
+    <input type="text" id="new_info_id" name="new_info_id"><br><br>
+    <label for="new_title">Title:</label>
+    <input type="text" id="new_title" name="new_title"><br><br>
+    <label for="new_genre">Genre:</label>
+    <input type="text" id="new_genre" name="new_genre"><br><br>
+    <label for="new_release_year">Release Year:</label>
+    <input type="text" id="new_release_year" name="new_release_year"><br><br>
+    <input type="submit" value="Add New Movie">
+  </form>
+</div>
+
   <h2>Update Movie</h2>
-  <form>
+  <form action="/updateMovie" method="post">
     <label for="movie_id">Movie ID:</label>
     <select id="movie_id" name="movie_id">
       {{#each movies}}
@@ -72,34 +88,37 @@
     <input type="text" id="release_year" name="release_year"><br><br>
     <input type="submit" value="Update Movie Info">
   </form>
-  
-  <h2>Add New Movie</h2>
-  <form>
-    <label for="new_title">Title:</label>
-    <input type="text" id="new_title" name="new_title"><br><br>
-    <label for="new_genre">Genre:</label>
-    <input type="text" id="new_genre" name="new_genre"><br><br>
-    <label for="new_release_year">Release Year:</label>
-    <input type="text" id="new_release_year" name="new_release_year"><br><br>
-    <input type="submit" value="Add New Movie">
-  </form>
-  
+
+
   <h2>Delete Movie</h2>
-  <form>
+  <form action="/deleteMovie" method="post">
     <label for="delete_movie_id">Movie ID:</label>
-    <select id="movie_id" name="movie_id">
+    <select id="delete_movie_id" name="delete_movie_id">
       {{#each movies}}
       <option value="{{this.movie_id}}">{{this.movie_id}}</option>
       {{/each}}
     </select><br><br>
-    <input type="submit" value="Delete Movie">
-    <label for="delete_movie_name">Movie Name:</label>
-    <input type="text" id="delete_movie_name" name="delete_movie_name"><br><br>
     <input type="submit" value="Delete Movie">
   </form>
 </main>
 <footer>
   <p>&copy; Team Busy Bees</p>
 </footer>
+<script>
+  document.getElementById('showFormButton').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+    } else {
+      form.style.display = 'none';
+    }
+  });
+  document.getElementById('submit').addEventListener('click', function() {
+    var form = document.getElementById('newMemberForm');
+      form.style.display = 'none';
+
+  });
+</script>
+
 </body>
 </html>

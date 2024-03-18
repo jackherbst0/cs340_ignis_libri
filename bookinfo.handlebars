@@ -12,7 +12,9 @@
   <h1>Book Info</h1>
   <nav>
     <ul>
+      <!-- Navigation links -->
       <li><a href="/">Home</a></li>
+      <li><a href="bookinfo">Book Info</a></li>
       <li><a href="books">Books</a></li>
       <li><a href="borrowings">Borrowings</a></li>
       <li><a href="members">Members</a></li>
@@ -26,16 +28,19 @@
   <table>
     <thead>
       <tr>
+        <!-- New BookInfo button and column headers -->
         <th><button id="showFormButton">New</button></th>
-        <th>ISBN <button>Filter</button></th>
-        <th>Title <button>Filter</button></th>
-        <th>Author <button>Filter</button></th>
-        <th>Publication <button>Filter</button></th>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publication</th>
       </tr>
     </thead>
     <tbody>
+      <!-- Fill table with DB values -->
       {{#each bookinfo}}
       <tr>
+        <!-- Delete button -->
         <td><form action="/deleteBookInfo" method="post">
             <input type="hidden" name="delete_isbn" value="{{this.isbn}}">
             <input type="submit" value="Delete">
@@ -46,6 +51,7 @@
         <td>{{this.publication}}</td>
       </tr>
       {{else}}
+      <!-- If there are no book info entries -->
       <tr>
           <td colspan="6">No book info found</td>
       </tr>
@@ -53,27 +59,29 @@
     </tbody>
   </table>
   
-<div id="newMemberForm" style="display: none;">
-  <h2>Add New BookInfo</h2>
-  <form action="/addNewBookInfo" method="post">
-    <label for="newisbn">ISBN:</label>
-    <input type="text" id="new_isbn" name="new_isbn"><br><br>
-    <label for="newtitle">Title:</label>
-    <input type="text" id="new_title" name="new_title"><br><br>
-    <label for="newauthor">Author:</label>
-    <input type="text" id="new_author" name="new_author"><br><br>
-    <label for="newpublication">Publication:</label>
-    <input type="text" id="new_publication" name="new_publication"><br><br>
-    <input type="submit" value="Add New Book Info">
-  </form>
+  <!-- New book info form -->
+  <div id="newMemberForm" style="display: none;">
+    <h2>Add New Book Info</h2>
+    <form action="/addNewBookInfo" method="post">
+      <label for="newisbn">ISBN:</label>
+      <input type="text" id="new_isbn" name="new_isbn"><br><br>
+      <label for="newtitle">Title:</label>
+      <input type="text" id="new_title" name="new_title"><br><br>
+      <label for="newauthor">Author:</label>
+      <input type="text" id="new_author" name="new_author"><br><br>
+      <label for="newpublication">Publication:</label>
+      <input type="text" id="new_publication" name="new_publication"><br><br>
+      <input type="submit" value="Add New Book Info">
+    </form>
   </div>
 
+  <!-- Update book info form -->
   <h2>Update Book Info</h2>
   <form action="/updateBookInfo" method="post">
     <label for="isbn">ISBN:</label>
-    <select id="isbn" name="isbn">
+    <select id="isbn" name="isbn" required>
       {{#each bookinfo}}
-      <option value="{{this.isbn}}">{{this.isbn}}</option>
+      <option value="{{this.isbn}}">{{this.isbn}}</option> 
       {{/each}}
     </select><br><br>
     <label for="title">Title:</label>
@@ -86,7 +94,8 @@
   </form>
   
 
-  <h2>Delete BookInfo</h2>
+  <!-- Delete book info form -->
+  <h2>Delete Book Info</h2>
   <form action="/deleteBookInfo" method="post">
     <label for="delete_isbn">ISBN:</label>
     <select id="delete_isbn" name="delete_isbn">
@@ -103,6 +112,7 @@
 </footer>
 
 <script>
+  // Show/hide new BookInfo form when "New" button is clicked
   document.getElementById('showFormButton').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
     if (form.style.display === 'none') {
@@ -111,10 +121,11 @@
       form.style.display = 'none';
     }
   });
+
+  // Hide the new book info form once submitted
   document.getElementById('submit').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
       form.style.display = 'none';
-
   });
 </script>
 </body>

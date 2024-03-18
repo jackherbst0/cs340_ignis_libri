@@ -12,12 +12,14 @@
   <h1>Movie Info</h1>
   <nav>
     <ul>
+      <!-- Navigation links -->
       <li><a href="/">Home</a></li>
       <li><a href="bookinfo">Book Info</a></li>
       <li><a href="books">Books</a></li>
       <li><a href="borrowings">Borrowings</a></li>
-      <li><a href="movies">Movies</a></li>
       <li><a href="members">Members</a></li>
+      <li><a href="movies">Movies</a></li>
+      <li><a href="movieinfo">Movie Info</a></li>
     </ul>
   </nav>
 </header>
@@ -26,16 +28,19 @@
   <table>
     <thead>
       <tr>
+        <!-- New movieInfo button and column headers -->
         <td><button id="showFormButton">New</button></td>
-        <th>Info ID <button>Filter</button></th>
-        <th>Title <button>Filter</button></th>
-        <th>Director <button>Filter</button></th>
-        <th>Rating <button>Filter</button></th>
+        <th>Info ID</th>
+        <th>Title</th>
+        <th>Director</th>
+        <th>Rating</th>
       </tr>
     </thead>
     <tbody>
+      <!-- Fill table with DB values -->
       {{#each movieinfo}}
       <tr>
+        <!-- Delete button -->
         <td><form action="/deleteMovieInfo" method="post">
             <input type="hidden" name="delete_movie_id" value="{{this.info_id}}">
             <input type="submit" value="Delete">
@@ -47,49 +52,55 @@
       </tr>
       {{else}}
       <tr>
+        <!-- If there are no movieInfo entries -->
           <td colspan="6">No movie info found</td>
       </tr>
       {{/each}}
     </tbody>
   </table>
   
+
+<!-- New movieInfo form --> 
   <div id="newMemberForm" style="display: none;">
-  <h2>Add New Movie</h2>
+  <h2>Add New Movie Info</h2>
   <form action="/addNewMovieInfo" method="post">
     <label for="new_title">Info ID:</label>
-    <input type="text" id="new_info_id" name="new_info_id"><br><br>
+    <input type="text" id="new_info_id" name="new_info_id" required><br><br>
     <label for="new_title">Title:</label>
-    <input type="text" id="new_title" name="new_title"><br><br>
+    <input type="text" id="new_title" name="new_title" required><br><br>
     <label for="new_director">Director:</label>
-    <input type="text" id="new_director" name="new_director"><br><br>
+    <input type="text" id="new_director" name="new_director" required><br><br>
     <label for="new_rating">Rating:</label>
-    <input type="text" id="new_rating" name="new_rating"><br><br>
+    <input type="text" id="new_rating" name="new_rating" required><br><br>
     <input type="submit" value="Add New Movie Info">
   </form>
 </div>
 
+
+<!-- Update movieInfo form --> 
   <h2>Update Movie Info</h2>
   <form action="/updateMovieInfo" method="post">
     <label for="movie_id">Movie ID:</label>
-    <select id="movie_id" name="movie_id">
+    <select id="movie_id" name="movie_id" required>
       {{#each movieinfo}}
       <option value="{{this.info_id}}">{{this.info_id}}</option>
       {{/each}}
     </select><br><br>
     <label for="title">Title:</label>
-    <input type="text" id="title" name="title"><br><br>
+    <input type="text" id="title" name="title" required><br><br>
     <label for="director">Director:</label>
-    <input type="text" id="director" name="director"><br><br>
+    <input type="text" id="director" name="director" required><br><br>
     <label for="rating">Rating:</label>
-    <input type="text" id="rating" name="rating"><br><br>
+    <input type="text" id="rating" name="rating" required><br><br>
     <input type="submit" value="Update Movie Info">
   </form>
 
 
+<!-- Delete movieInfo form --> 
   <h2>Delete Movie Info</h2>
   <form action="/deleteMovieInfo" method="post">
     <label for="delete_movie_id">Movie ID:</label>
-    <select id="delete_movie_id" name="delete_movie_id">
+    <select id="delete_movie_id" name="delete_movie_id" required>
       {{#each movieinfo}}
       <option value="{{this.info_id}}">{{this.info_id}}</option>
       {{/each}}
@@ -101,6 +112,7 @@
   <p>&copy; Team Busy Bees</p>
 </footer>
 <script>
+  // Show/hide new movieInfo form when "New" button is clicked
   document.getElementById('showFormButton').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
     if (form.style.display === 'none') {
@@ -109,6 +121,7 @@
       form.style.display = 'none';
     }
   });
+  // Hide the new movieInfo form once submitted
   document.getElementById('submit').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
       form.style.display = 'none';

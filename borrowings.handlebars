@@ -12,9 +12,11 @@
   <h1>Borrowings</h1>
   <nav>
     <ul>
+      <!-- Navigation links -->
       <li><a href="/">Home</a></li>
       <li><a href="bookinfo">Book Info</a></li>
       <li><a href="books">Books</a></li>
+      <li><a href="borrowings">Borrowings</a></li>
       <li><a href="members">Members</a></li>
       <li><a href="movies">Movies</a></li>
       <li><a href="movieinfo">Movie Info</a></li>
@@ -23,21 +25,25 @@
 </header>
 <main>
   <h2>Borrowings</h2>
+  <p><em>To add or update a borrowing, corresponding member id, book id and/or movie id must be present in their respective tables.</em></p>
   <table>
     <thead>
       <tr>
+        <!-- New Borrowing button and column headers -->
         <th><button id="showFormButton">New</button></th>
-        <th>Borrowing ID <button>Filter</button></th>
-        <th>Member ID <button>Filter</button></th>
-        <th>Book ID <button>Filter</button></th>
-        <th>Movie ID <button>Filter</button></th>
-        <th>Borrow Date <button>Filter</button></th>
-        <th>Return Date <button>Filter</button></th>
+        <th>Borrowing ID</th>
+        <th>Member ID</th>
+        <th>Book ID</th>
+        <th>Movie ID</th>
+        <th>Borrow Date</th>
+        <th>Return Date</th>
       </tr>
     </thead>
     <tbody>
+      <!-- Fill table with DB values -->
       {{#each borrowings}}
       <tr>
+        <!-- Delete button -->
         <td><form action="/deleteBorrowing" method="post">
             <input type="hidden" name="delete_borrowing_id" value="{{this.borrowing_id}}">
             <input type="submit" value="Delete">
@@ -50,13 +56,16 @@
         <td>{{this.return_date}}</td>
       </tr>
       {{else}}
+      <!-- If there are no borrowings entries -->
       <tr>
           <td colspan="6">No borrowings found</td>
       </tr>
       {{/each}}
     </tbody>
   </table>
-  
+
+
+<!-- New Borrowing form -->  
 <div id="newMemberForm" style="display: none;">
   <h2>Add New Borrowing</h2>
   <form action="/addNewBorrowing" method="post">
@@ -67,17 +76,19 @@
     <label for="new_movie_id">Movie ID:</label>
     <input type="text" id="new_movie_id" name="new_movie_id"><br><br>
     <label for="new_borrow_date">Borrow Date:</label>
-    <input type="text" id="new_borrow_date" name="new_borrow_date"><br><br>
+    <input type="date" id="new_borrow_date" name="new_borrow_date"><br><br>
     <label for="new_return_date">Return Date:</label>
-    <input type="text" id="new_return_date" name="new_return_date"><br><br>
+    <input type="date" id="new_return_date" name="new_return_date"><br><br>
     <input type="submit" value="Add New Borrowing">
   </form>
 </div>
 
+
+<!-- Update Borrowing form -->
   <h2>Update Borrowing</h2>
-  <form action="/UpdateBorrowing" method="post">
+  <form action="/updateBorrowing" method="post">
     <label for="borrowing_id">Borrowing ID:</label>
-    <select id="member_id" name="member_id">
+    <select id="borrowing_id" name="borrowing_id">
       {{#each borrowings}}
       <option value="{{this.borrowing_id}}">{{this.borrowing_id}}</option>
       {{/each}}
@@ -89,18 +100,18 @@
     <label for="movie_id">Movie ID:</label>
     <input type="text" id="movie_id" name="movie_id"><br><br>
     <label for="borrow_date">Borrow Date:</label>
-    <input type="text" id="borrow_date" name="borrow_date"><br><br>
+    <input type="date" id="borrow_date" name="borrow_date"><br><br>
     <label for="return_date">Return Date:</label>
-    <input type="text" id="return_date" name="return_date"><br><br>
+    <input type="date" id="return_date" name="return_date"><br><br>
     <input type="submit" value="Update Borrowing">
   </form>
   
 
-  
+<!-- Delete Borrowing form -->
   <h2>Delete Borrowing</h2>
-  <form action="/DeleteBorrowing" method="post">
+  <form action="/deleteBorrowing" method="post">
     <label for="delete_borrowing_id">Borrowing ID:</label>
-    <select id="delete_member_id" name="delete_member_id">
+    <select id="delete_borrowing_id" name="delete_borrowing_id">
       {{#each borrowings}}
       <option value="{{this.borrowing_id}}">{{this.borrowing_id}}</option>
       {{/each}}
@@ -112,6 +123,7 @@
   <p>&copy; Team Busy Bees</p>
 </footer>
 <script>
+  // Show/hide new Borrowing form when "New" button is clicked
   document.getElementById('showFormButton').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
     if (form.style.display === 'none') {
@@ -120,6 +132,7 @@
       form.style.display = 'none';
     }
   });
+  // Hide the new Borrowing form once submitted
   document.getElementById('submit').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
       form.style.display = 'none';

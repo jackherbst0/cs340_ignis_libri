@@ -12,6 +12,7 @@
   <h1>Members</h1>
   <nav>
     <ul>
+      <!-- Navigation links -->
       <li><a href="/">Home</a></li>
       <li><a href="bookinfo">Book Info</a></li>
       <li><a href="books">Books</a></li>
@@ -27,17 +28,20 @@
   <table>
     <thead>
       <tr>
+        <!-- New Member button and column headers -->
         <th><button id="showFormButton">New</button></th>
-        <th>Member ID <button>Filter</button></th>
-        <th>Name <button>Filter</button></th>
-        <th>Address <button>Filter</button></th>
-        <th>Phone <button>Filter</button></th>
-        <th>Email <button>Filter</button></th>
+        <th>Member ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
       </tr>
     </thead>
     <tbody>
+      <!-- Fill table with DB values -->
       {{#each members}}
       <tr>
+        <!-- Delete button -->
         <td><form action="/deleteMember" method="post">
             <input type="hidden" name="delete_member_id" value="{{this.member_id}}">
             <input type="submit" value="Delete">
@@ -49,6 +53,7 @@
         <td>{{this.email}}</td>
       </tr>
       {{else}}
+      <!-- If there are no members entries -->
       <tr>
           <td colspan="7">No members found</td>
       </tr>
@@ -56,6 +61,8 @@
     </tbody>
   </table>
   
+
+<!-- New Member form --> 
   <div id="newMemberForm" style="display: none;">
   <h2>Add New Member</h2>
   <form action="/addNewMember" method="post">
@@ -63,37 +70,41 @@
       <input type="text" id="new_name" name="new_name" required><br><br>
       <label for="new_address">Address:</label>
       <input type="text" id="new_address" name="new_address" required><br><br>
-      <label for="new_phone">Phone:</label>
-      <input type="text" id="new_phone" name="new_phone" required><br><br>
+      <label for="new_phone">Phone (###-####):</label>
+      <input type="text" id="new_phone" name="new_phone" pattern="\d{3}-\d{4}" maxlength="8" required><br><br>
       <label for="new_email">Email:</label>
-      <input type="text" id="new_email" name="new_email" required><br><br>
+      <input type="email" id="new_email" name="new_email" required><br><br>
       <input type="submit" value="Add New Member">
   </form>
 </div>
 
+
+<!-- Update Member form --> 
   <h2>Update Member</h2>
   <form action="/updateMember" method="post">
     <label for="member_id">Member ID:</label>
-    <select id="member_id" name="member_id">
+    <select id="member_id" name="member_id" required>
       {{#each members}}
       <option value="{{this.member_id}}">{{this.member_id}}</option>
       {{/each}}
     </select><br><br>
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name"><br><br>
+    <input type="text" id="name" name="name" required><br><br>
     <label for="address">Address:</label>
-    <input type="text" id="address" name="address"><br><br>
-    <label for="phone">Phone:</label>
-    <input type="text" id="phone" name="phone"><br><br>
+    <input type="text" id="address" name="address" required><br><br>
+    <label for="phone">Phone (###-####):</label>
+    <input type="text" id="phone" name="phone" pattern="\d{3}-\d{4}" maxlength="8" required><br><br>
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email"><br><br>
+    <input type="email" id="email" name="email" required><br><br>
     <input type="submit" value="Update Member">
   </form>
   
+
+<!-- Delete Member form --> 
   <h2>Delete Member</h2>
   <form action="/deleteMember" method="post">
     <label for="delete_member_id">Member ID:</label>
-    <select id="delete_member_id" name="delete_member_id">
+    <select id="delete_member_id" name="delete_member_id" required>
       {{#each members}}
       <option value="{{this.member_id}}">{{this.member_id}}</option>
       {{/each}}
@@ -106,6 +117,7 @@
   <p>&copy; Team Busy Bees</p>
 </footer>
 <script>
+  // Show/hide new Member form when "New" button is clicked
   document.getElementById('showFormButton').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
     if (form.style.display === 'none') {
@@ -114,6 +126,7 @@
       form.style.display = 'none';
     }
   });
+  // Hide the new Member form once submitted
   document.getElementById('submit').addEventListener('click', function() {
     var form = document.getElementById('newMemberForm');
       form.style.display = 'none';

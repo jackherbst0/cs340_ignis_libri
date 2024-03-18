@@ -25,7 +25,7 @@ app.get('/', function(req,res){
     RENDERING ROUTES
 */
 
-// Route to render your HTML page
+// Route to render members page
 app.get('/members', function(req, res) {
     db.pool.query('SELECT * FROM Members', function(err, results, fields) {
         if (err) {
@@ -37,6 +37,7 @@ app.get('/members', function(req, res) {
     });
 });
 
+// Route to render movies page
 app.get('/movies', function(req,res){
     db.pool.query('SELECT * FROM Movies', function(err, results, fields) {
         if (err) {
@@ -49,6 +50,7 @@ app.get('/movies', function(req,res){
     });
 });
 
+// Route to render books page
 app.get('/books', function(req,res){
     db.pool.query('SELECT * FROM Books', function(err, results, fields) {
         if (err) {
@@ -60,6 +62,7 @@ app.get('/books', function(req,res){
     });
 });
 
+// Route to render bookInfo page
 app.get('/bookinfo', function(req,res){
     db.pool.query('SELECT * FROM BookInfo', function(err, results, fields) {
         if (err) {
@@ -72,6 +75,7 @@ app.get('/bookinfo', function(req,res){
     });
 });
 
+// Route to render borrowings page
 app.get('/borrowings', function(req,res){
     db.pool.query('SELECT * FROM Borrowings', function(err, results, fields) {
         if (err) {
@@ -84,6 +88,7 @@ app.get('/borrowings', function(req,res){
     });
 });
 
+// Route to render movieInfo page
 app.get('/movieinfo', function(req,res){
     db.pool.query('SELECT * FROM MovieInfo', function(err, results, fields) {
         if (err) {
